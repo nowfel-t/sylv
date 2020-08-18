@@ -1,0 +1,36 @@
+version: '3'
+
+networks:
+
+    atlas-network:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet:  172.32.0.0/16
+services:
+
+    atlas-nginx:
+        image: nginx:latest
+        container_name: atlas-nginx
+        volumes:
+            - nginx/nginx.conf/etc/nginx/nginx.conf
+        networks:
+            atlas-network:
+                ipv4_address: 172.32.0.10
+        ports:
+            - "12080:80"
+
+    atlas-elasticsearch:
+        image: elasticsearch:7.5.0
+        environment:
+            - bootstrap.memory_lock=true
+            - discovery.type=single-node
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        container_name: atlas-elasticsearch
+        networks:
+            atlas-network:
+                ipv4_address: 172.32.0.20
+        ports:
+            - "2811:9200"
+            - "2911:9300"
