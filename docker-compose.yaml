@@ -14,12 +14,12 @@ services:
         image: nginx:latest
         container_name: atlas-nginx
         volumes:
-            - nginx/nginx.conf/etc/nginx/nginx.conf
+            - "./nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
         networks:
             atlas-network:
                 ipv4_address: 172.32.0.10
         ports:
-            - "12080:80"
+            - "12880:80"
 
     atlas-elasticsearch:
         image: elasticsearch:7.5.0
