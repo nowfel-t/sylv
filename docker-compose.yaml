@@ -34,3 +34,15 @@ services:
         ports:
             - "2811:9200"
             - "2911:9300"
+
+    atlas-kibana:
+        image: kibana:7.5.0
+        environment:
+            SERVER_NAME: localhost
+            ELASTICSEARCH_HOSTS: http://atlas-elasticsearch:9200
+        container_name: atlas-kibana
+        networks:
+            atlas-network:
+                ipv4_address: 172.32.0.30
+        ports:
+            - "5555:5601"
