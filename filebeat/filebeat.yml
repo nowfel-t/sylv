@@ -1,0 +1,27 @@
+    filebeat.inputs:
+    - type: log
+      enabled: false
+      paths:
+       - /var/log/*.log
+
+      ignore_older: 72h
+
+      exclude_files: ['\.gz$']
+    
+    filebeat.config.modules:
+        path: /usr/share/filebeat/modules.d/*.yml
+        reload.enabled: false
+
+    setup.template.settings:
+        index.number_of_shards: 1
+
+    output.elasticsearch:
+            hosts: ["http://atlas-elasticsearch:9200"]
+    
+    setup.kibana:
+        host: "http://atlas-kibana:5601"
+    
+    processors:
+        - add_host_metadata: ~
+        - add_cloud_metadata: ~
+       
