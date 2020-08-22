@@ -1,0 +1,6 @@
+2020/08/22 13:57:54 [emerg] 1#1: unknown log format "access_log" in /etc/nginx/nginx.conf:10
+2020/08/22 13:58:28 [emerg] 1#1: unknown log format "access_log" in /etc/nginx/nginx.conf:10
+2020/08/22 14:00:07 [emerg] 1#1: unknown log format "sendfile" in /etc/nginx/nginx.conf:10
+2020/08/22 14:00:16 [emerg] 1#1: unknown log format "sendfile" in /etc/nginx/nginx.conf:10
+2020/08/22 14:00:58 [emerg] 1#1: invalid number of arguments in "sendfile" directive in /etc/nginx/nginx.conf:11
+2020/08/22 14:02:18 [emerg] 1#1: no "events" section in configuration
